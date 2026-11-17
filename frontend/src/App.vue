@@ -11,6 +11,18 @@
     <main class="app-main">
       <header class="app-head">
         <span class="head-desc">面向指标口径管理、分析实验设计、OLAP查询、数据看板构建与数据API发布的数据应用平台。</span>
+        <span class="head-scope">
+          <label>用户组
+            <input v-model="store.userGroup" data-testid="session-group" placeholder="留空为平台管理视图" />
+          </label>
+          <label>角色
+            <select v-model="store.role" data-testid="session-role">
+              <option value="管理员">管理员</option>
+              <option value="编辑">编辑</option>
+              <option value="只读">只读</option>
+            </select>
+          </label>
+        </span>
         <span class="head-user">当前值班：{{ store.operator }} · {{ store.shiftLabel }}</span>
       </header>
       <RouterView />
@@ -23,5 +35,5 @@ import { useSessionStore } from '@/stores/session'
 
 const store = useSessionStore()
 
-const navItems = [{ label: "运营概览", path: "/" }, { label: "指标定义", path: "/metric_def" }, { label: "维度管理", path: "/dimension" }, { label: "数据集管理", path: "/dataset" }, { label: "分析实验", path: "/experiment" }, { label: "OLAP查询", path: "/query_builder" }, { label: "数据看板", path: "/dashboard" }, { label: "图表配置", path: "/chart" }, { label: "数据API发布", path: "/data_service" }, { label: "智能告警", path: "/alert" }, { label: "分析用户组", path: "/user_group" }, { label: "数据快照", path: "/snapshot" }, { label: "任务调度", path: "/scheduler" }, { label: "缓存管理", path: "/cache" }, { label: "分析管道", path: "/pipeline" }, { label: "分析模型", path: "/model" }, { label: "数据集市", path: "/data_mart" }, { label: "数据导出", path: "/export" }, { label: "数据审计", path: "/audit" }]
+const navItems = [{ label: "运营概览", path: "/" }, { label: "指标定义", path: "/metric_def" }, { label: "维度管理", path: "/dimension" }, { label: "数据集管理", path: "/dataset" }, { label: "分析实验", path: "/experiment" }, { label: "OLAP查询", path: "/query_builder" }, { label: "数据看板", path: "/dashboard" }, { label: "图表配置", path: "/chart" }, { label: "数据API发布", path: "/data_service" }, { label: "智能告警", path: "/alert" }, { label: "分析用户组", path: "/user_group" }, { label: "数据快照", path: "/snapshot" }, { label: "任务调度", path: "/scheduler" }, { label: "缓存管理", path: "/cache" }, { label: "分析管道", path: "/pipeline" }, { label: "分析模型", path: "/model" }, { label: "数据集市", path: "/data_mart" }, { label: "集市授权过滤记录", path: "/mart_authorization" }, { label: "数据导出", path: "/export" }, { label: "数据审计", path: "/audit" }]
 </script>

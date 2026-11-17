@@ -17,6 +17,7 @@ const Cache = () => import('@/views/cache/index.vue')
 const Pipeline = () => import('@/views/pipeline/index.vue')
 const Model = () => import('@/views/model/index.vue')
 const DataMart = () => import('@/views/data_mart/index.vue')
+const MartAuthorization = () => import('@/views/mart_authorization/index.vue')
 const Export = () => import('@/views/export/index.vue')
 const Audit = () => import('@/views/audit/index.vue')
 
@@ -40,6 +41,7 @@ const router = createRouter({
     { path: '/pipeline', name: 'pipeline', component: Pipeline },
     { path: '/model', name: 'model', component: Model },
     { path: '/data_mart', name: 'data_mart', component: DataMart },
+    { path: '/mart_authorization', name: 'mart_authorization', component: MartAuthorization },
     { path: '/export', name: 'export', component: Export },
     { path: '/audit', name: 'audit', component: Audit },
   ],

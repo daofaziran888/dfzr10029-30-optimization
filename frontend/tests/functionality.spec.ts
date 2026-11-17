@@ -523,6 +523,13 @@ test('DAG拓扑模块：节点渲染、详情、动作、导出', async ({ page 
   if (dagModules.length === 0) { test.skip(); return }
 
   for (const mod of dagModules) {
+    await page.goto('/')
+    // 数据集市默认按用户组授权过滤；E2E 先切回平台管理视图再走维护流程。
+    const groupInput = page.getByTestId('session-group')
+    if (await groupInput.count()) {
+      await groupInput.fill('')
+      await page.waitForTimeout(1500)
+    }
     await page.goto(`/${mod.key}`)
     await page.waitForTimeout(3000)
     await expect(page.locator('svg.dag-svg')).toBeVisible()

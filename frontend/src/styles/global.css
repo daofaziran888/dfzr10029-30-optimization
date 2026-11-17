@@ -70,3 +70,23 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .analysis-chart { display: flex; align-items: flex-end; gap: 8px; height: 160px; padding: 12px 0; }
 .analysis-bar { flex: 1; border-radius: 4px 4px 0 0; background: var(--brand); min-width: 24px; position: relative; transition: height 0.4s; }
 .analysis-bar span { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--muted); white-space: nowrap; }
+/* 集市授权过滤记录与授权口径 */
+.mart-scope { align-items: flex-end; }
+.mart-scope input { border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 13px; min-width: 220px; }
+.mart-scope select { border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 13px; background: #fff; }
+.scope-summary { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.scope-summary .stat-card { min-width: 140px; }
+.scope-summary .stat-value { font-size: 15px; word-break: break-all; }
+.scope-notice { padding: 10px 12px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; font-size: 13px; color: #9a3412; }
+.scope-empty { text-align: center; color: var(--muted); font-size: 13px; padding: 40px 0; }
+.data-table-wrap { margin-top: 12px; overflow-x: auto; }
+.data-table-wrap .data-table td:last-child { font-size: 12px; color: var(--muted); }
+.denied-wrap { margin-top: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+.denied-wrap h3 { font-size: 13px; margin: 0 0 6px; color: #b42318; }
+.denied-wrap ul { margin: 0; padding-left: 18px; font-size: 12px; color: var(--muted); }
+.reason-cell { font-size: 12px; color: var(--muted); max-width: 320px; }
+.trace-panel { margin-top: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+.trace-panel .trace-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.trace-panel p { font-size: 12px; color: var(--muted); margin: 6px 0; }
+.trace-flow { display: block; }
+.conflict-list { margin: 0; padding-left: 18px; font-size: 12px; color: #b42318; }

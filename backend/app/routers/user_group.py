@@ -65,6 +65,19 @@ def export_entries(
         headers={"Content-Disposition": 'attachment; filename="user_group.csv"'})
 
 
+@router.get("/{entry_id}/authorizations", response_model=dict)
+def get_entry_authorizations(entry_id: int) -> dict:
+    """跨模块读取：用户组关联的集市授权过滤记录版本变化。"""
+    from app.services.mart_authorization import service as auth_service
+
+    entry = service.get_entry(entry_id)
+    if entry is None:
+        raise HTTPException(status_code=404, detail=f"用户组 {entry_id} 不存在或已归档")
+    code = str(entry.get("组编号") or "")
+    records = auth_service.records_for_group(code)
+    return {"组编号": code, "组名称": entry.get("组名称"), "items": records, "total": len(records)}
+
+
 @router.get("/{entry_id}", response_model=dict)
 def get_entry(entry_id: int) -> dict:
     """读取单条用户组明细；不存在时给出可读的错误说明。"""

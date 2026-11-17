@@ -1,6 +1,15 @@
 /** 统一请求封装：拼后端地址、抛网络错误、给页脚留一句可读的说明。 */
 const API_BASE = import.meta.env.VITE_API_BASE ?? ''
 
+/** 写操作带上操作人与角色，用于只读拦截与归属校验。 */
+export function actorHeaders(operator: string, role: string): Record<string, string> {
+  return {
+    'Content-Type': 'application/json',
+    'X-Operator': operator,
+    'X-Role': role,
+  }
+}
+
 export function request(path: string, init?: RequestInit): Promise<Response> {
   const url = path.startsWith('http') ? path : `${API_BASE}${path}`
   return fetch(url, {

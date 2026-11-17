@@ -44,6 +44,10 @@ class UserGroupService:
         rows = store.rows(MODULE)
         entry = {"id": max((int(row.get("id", 0)) for row in rows), default=0) + 1}
         entry.update({field: values.get(field) for field in LIST_FIELDS})
+        # 数据权限相关字段允许随登记一起写入，保持既有入参兼容。
+        for extra in ("授权维度", "可读维度", "成员"):
+            if values.get(extra) not in (None, ""):
+                entry[extra] = values.get(extra)
         entry["status"] = STATUS_ORDER[0]
         entry["pending"] = True
         entry["abnormal"] = False
